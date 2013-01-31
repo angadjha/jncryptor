@@ -3,7 +3,7 @@
 
 = Getting JNCryptor =
 
-You can download binaries, documentation and source from the [http://code.google.com/p/jncryptor/downloads downloads page]. Maven users can copy the following snippet to retrieve the artifacts from Maven Central:
+You can download binaries, documentation and source from the [http://code.google.com/p/jncryptor/downloads downloads page].  Maven users can copy the following snippet to retrieve the artifacts from Maven Central:
 
 {{{
 <dependency>
@@ -12,6 +12,8 @@ You can download binaries, documentation and source from the [http://code.google
     <version>0.1</version>
 </dependency>
 }}}
+
+The [http://jncryptor.googlecode.com/svn/trunk/javadoc/index.html JNCryptor Javadocs] can also be browsed online.
 
 = Using JNCryptor =
 
