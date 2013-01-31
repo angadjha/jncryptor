@@ -27,5 +27,4 @@ try {
 } catch (CryptorException e) {
   // Something went wrong
   e.printStackTrace();
-}
-</code>
+}</code>
