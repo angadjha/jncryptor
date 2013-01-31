@@ -15,4 +15,17 @@ You can download binaries, documentation and source from the [http://code.google
 
 = Using JNCryptor =
 
-TODO
+A quick example is shown below:
+
+<code language="java">
+JNCryptor cryptor = JNCryptorFactory.getCryptor();
+byte[] plaintext = "Hello, World!".getBytes();
+String password = "secretsquirrel";
+
+try {
+  byte[] ciphertext = cryptor.encryptData(plaintext, password.toCharArray());
+} catch (CryptorException e) {
+  // Something went wrong
+  e.printStackTrace();
+}
+</code>
