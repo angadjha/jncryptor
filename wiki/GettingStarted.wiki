@@ -1,0 +1,18 @@
+#summary Introduction to using JNCryptor
+#labels Featured
+
+= Getting JNCryptor =
+
+You can download binaries, documentation and source from the [http://code.google.com/p/jncryptor/downloads downloads page]. Maven users can copy the following snippet to retrieve the artifacts from Maven Central:
+
+{{{
+<dependency>
+    <groupId>org.cryptonode.jncryptor</groupId>
+    <artifactId>jncryptor</artifactId>
+    <version>0.1</version>
+</dependency>
+}}}
+
+= Using JNCryptor =
+
+TODO
