@@ -1,7 +1,26 @@
 #summary Introduction to using JNCryptor
 #labels Featured
 
-= Getting JNCryptor =
+==Overview==
+
+JNCryptor is an easy-to-use library for encrypting data with AES. It was ported to Java from the [https://github.com/rnapier/RNCryptor RNCryptor] library for iOS.
+
+===Data Format==
+
+A proprietary data format is used that stores the IV, salt values (if applicable), ciphertext and HMAC value in a compact fashion. Methods are offered to encrypt data based on either an existing key, or a password. In the latter case, a key is derived from the password using a key derivation function, with a large number of iterations and a salt value.
+
+|| *Item* || *Byte length* || *Description* ||
+|| Version || 1 || Data format version. Always `0x02`. ||
+|| Options || 1 || Options. `0x01` indicates a password was used. ||
+|| Encryption Salt || 8 || Salt value used to derive the encryption key. Only present if a password was used. ||
+|| HMAC Salt || 8 || Salt value used to derive the HMAC key. Only present if a password was used. ||
+|| IV || 16 || Random IV  ||
+|| Ciphertext || _n_ x 16 || Encrypted with 256-bit AES, CBC-mode with PKCS&nbsp;#5 padding. ||
+|| HMAC || 32 || HMAC calculated with SHA-256.  ||
+
+
+
+== Getting JNCryptor ==
 
 You can download binaries, documentation and source from the [http://code.google.com/p/jncryptor/downloads downloads page].  Maven users can copy the following snippet to retrieve the artifacts from Maven Central:
 
@@ -15,7 +34,7 @@ You can download binaries, documentation and source from the [http://code.google
 
 The [http://jncryptor.googlecode.com/svn/trunk/javadoc/index.html JNCryptor Javadocs] can also be browsed online.
 
-= Using JNCryptor =
+== Using JNCryptor ==
 
 A quick example is shown below:
 
