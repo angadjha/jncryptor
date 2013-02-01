@@ -15,9 +15,14 @@ A proprietary data format is used that stores the IV, salt values (if applicable
 || Encryption Salt || 8 || Salt value used to derive the encryption key. Only present if a password was used. ||
 || HMAC Salt || 8 || Salt value used to derive the HMAC key. Only present if a password was used. ||
 || IV || 16 || Random IV  ||
-|| Ciphertext || _n_ x 16 || Encrypted with 256-bit AES, CBC-mode with PKCS&nbsp;#5 padding. ||
+|| Ciphertext || _n_ x 16 || Encrypted with 256-bit AES, CBC-mode with PKCS #5 padding. ||
 || HMAC || 32 || HMAC calculated with SHA-256.  ||
 
+Keys are derived from the password and the appropriate salt value using the PBKDF2 function with SHA1. A separate key is generated for encrypting the plaintext and computing the HMAC.
+
+===History===
+
+The data format supported by this library is v2. Both v1 and v0 have a significant security flaw whereby only the ciphertext was included in the HMAC value. There are no plans to support v1 or v0.
 
 
 == Getting JNCryptor ==
