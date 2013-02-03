@@ -33,7 +33,7 @@ You can download binaries, documentation and source from the [http://code.google
 <dependency>
     <groupId>org.cryptonode.jncryptor</groupId>
     <artifactId>jncryptor</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
 </dependency>
 }}}
 
