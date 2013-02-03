@@ -5,26 +5,6 @@
 
 JNCryptor is an easy-to-use library for encrypting data with AES. It was ported to Java from the [https://github.com/rnapier/RNCryptor RNCryptor] library for iOS.
 
-===Data Format==
-
-A proprietary data format is used that stores the IV, salt values (if applicable), ciphertext and HMAC value in a compact fashion. Methods are offered to encrypt data based on either an existing key, or a password. In the latter case, a key is derived from the password using a key derivation function, with a large number of iterations and a salt value.
-
-|| *Item* || *Byte length* || *Description* ||
-|| Version || 1 || Data format version. Always `0x02`. ||
-|| Options || 1 || Options. `0x01` indicates a password was used. ||
-|| Encryption Salt || 8 || Salt value used to derive the encryption key. Only present if a password was used. ||
-|| HMAC Salt || 8 || Salt value used to derive the HMAC key. Only present if a password was used. ||
-|| IV || 16 || Random IV  ||
-|| Ciphertext || _n_ x 16 || Encrypted with 256-bit AES, CBC-mode with PKCS #5 padding. ||
-|| HMAC || 32 || HMAC calculated with SHA-256.  ||
-
-Keys are derived from the password and the appropriate salt value using the PBKDF2 function with SHA1. A separate key is generated for encrypting the plaintext and computing the HMAC.
-
-===History===
-
-The data format supported by this library is v2. Both v1 and v0 have a significant security flaw whereby only the ciphertext was included in the HMAC value. There are no plans to support v1 or v0.
-
-
 == Getting JNCryptor ==
 
 You can download binaries, documentation and source from the [http://code.google.com/p/jncryptor/downloads downloads page].  Maven users can copy the following snippet to retrieve the artifacts from Maven Central:
@@ -54,3 +34,26 @@ try {
   // Something went wrong
   e.printStackTrace();
 }</code>
+
+
+===Data Format==
+
+A proprietary data format is used that stores the IV, salt values (if applicable), ciphertext and HMAC value in a compact fashion. Methods are offered to encrypt data based on either an existing key, or a password. In the latter case, a key is derived from the password using a key derivation function, with a large number of iterations and a salt value.
+
+|| *Item* || *Byte length* || *Description* ||
+|| Version || 1 || Data format version. Always `0x02`. ||
+|| Options || 1 || Options. `0x01` indicates a password was used. ||
+|| Encryption Salt || 8 || Salt value used to derive the encryption key. Only present if a password was used. ||
+|| HMAC Salt || 8 || Salt value used to derive the HMAC key. Only present if a password was used. ||
+|| IV || 16 || Random IV  ||
+|| Ciphertext || _n_ x 16 || Encrypted with 256-bit AES, CBC-mode with PKCS #5 padding. ||
+|| HMAC || 32 || HMAC calculated with SHA-256.  ||
+
+Keys are derived from the password and the appropriate salt value using the PBKDF2 function with SHA1. A separate key is generated for encrypting the plaintext and computing the HMAC.
+
+===History===
+
+The data format supported by this library is v2. Both v1 and v0 have a significant security flaw whereby only the ciphertext was included in the HMAC value. There are no plans to support v1 or v0.
+
+
+
