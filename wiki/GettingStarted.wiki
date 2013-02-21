@@ -53,5 +53,4 @@ Keys are derived from the password and the appropriate salt value using the PBKD
 
 ===History===
 
-The data format supported by this library is v2. Both v1 and v0 have a significant security flaw whereby only the ciphertext was included in the HMAC value. There are no plans to support v1 or v0.
-
+The data format supported by this library is v2. Both v1 and v0 have a [http://robnapier.net/blog/rncryptor-hmac-vulnerability-827 significant security flaw] whereby only the ciphertext was included in the HMAC value. There are no plans to support v1 or v0.
