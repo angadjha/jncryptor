@@ -38,7 +38,7 @@ try {
 
 ===Data Format==
 
-A proprietary data format is used that stores the IV, salt values (if applicable), ciphertext and HMAC value in a compact fashion. Methods are offered to encrypt data based on either an existing key, or a password. In the latter case, a key is derived from the password using a key derivation function, with a large number of iterations and a salt value.
+A proprietary data format is used that stores the IV, salt values (if applicable), ciphertext and HMAC value in a compact fashion. Methods are offered to encrypt data based on either an existing key, or a password. In the latter case, a key is derived from the password using a key derivation function, with 10,000 iterations and a salt value.
 
 || *Item* || *Byte length* || *Description* ||
 || Version || 1 || Data format version. Always `0x02`. ||
@@ -54,6 +54,4 @@ Keys are derived from the password and the appropriate salt value using the PBKD
 ===History===
 
 The data format supported by this library is v2. Both v1 and v0 have a significant security flaw whereby only the ciphertext was included in the HMAC value. There are no plans to support v1 or v0.
-
-
 
