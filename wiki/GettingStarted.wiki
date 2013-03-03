@@ -1,6 +1,8 @@
 #summary Introduction to using JNCryptor
 #labels Featured
 
+<wiki:toc max_depth="1" />
+
 ==Overview==
 
 JNCryptor is an easy-to-use library for encrypting data with AES. It was ported to Java from the [https://github.com/rnapier/RNCryptor RNCryptor] library for iOS.
@@ -34,6 +36,12 @@ try {
   // Something went wrong
   e.printStackTrace();
 }</code>
+
+===Android===
+
+JNCryptor can be used in Android applications. [http://code.google.com/p/jncryptor/downloads/list Download] the latest binary release and place the JARs in the `libs` folder for your project.
+
+You may wish to replace the `slf4j-api-*.jar` file with latest version of SLF4J Android, available at http://www.slf4j.org/android. This translates logging calls directly to the Android logging system. 
 
 
 ===Data Format==
