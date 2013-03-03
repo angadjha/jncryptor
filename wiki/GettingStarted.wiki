@@ -3,11 +3,11 @@
 
 <wiki:toc max_depth="1" />
 
-==Overview==
+=Overview=
 
 JNCryptor is an easy-to-use library for encrypting data with AES. It was ported to Java from the [https://github.com/rnapier/RNCryptor RNCryptor] library for iOS.
 
-== Getting JNCryptor ==
+= Getting JNCryptor =
 
 You can download binaries, documentation and source from the [http://code.google.com/p/jncryptor/downloads downloads page].  Maven users can copy the following snippet to retrieve the artifacts from Maven Central:
 
@@ -21,7 +21,7 @@ You can download binaries, documentation and source from the [http://code.google
 
 The [http://jncryptor.googlecode.com/svn/trunk/javadoc/index.html JNCryptor Javadocs] can also be browsed online.
 
-== Using JNCryptor ==
+= Using JNCryptor =
 
 A quick example is shown below:
 
@@ -37,14 +37,14 @@ try {
   e.printStackTrace();
 }</code>
 
-===Android===
+=Android=
 
 JNCryptor can be used in Android applications. [http://code.google.com/p/jncryptor/downloads/list Download] the latest binary release and place the JARs in the `libs` folder for your project.
 
 You may wish to replace the `slf4j-api-*.jar` file with latest version of SLF4J Android, available at http://www.slf4j.org/android. This translates logging calls directly to the Android logging system. 
 
 
-===Data Format==
+=Data Format=
 
 A proprietary data format is used that stores the IV, salt values (if applicable), ciphertext and HMAC value in a compact fashion. Methods are offered to encrypt data based on either an existing key, or a password. In the latter case, a key is derived from the password using a key derivation function, with 10,000 iterations and a salt value.
 
@@ -59,6 +59,6 @@ A proprietary data format is used that stores the IV, salt values (if applicable
 
 Keys are derived from the password and the appropriate salt value using the PBKDF2 function with SHA1. A separate key is generated for encrypting the plaintext and computing the HMAC.
 
-===History===
+=History=
 
 The data format supported by this library is v2. Both v1 and v0 have a [http://robnapier.net/blog/rncryptor-hmac-vulnerability-827 significant security flaw] whereby only the ciphertext was included in the HMAC value. There are no plans to support v1 or v0.
