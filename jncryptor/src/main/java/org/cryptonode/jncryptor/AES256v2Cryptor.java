@@ -63,14 +63,24 @@ import org.apache.commons.lang3.Validate;
  * <p>
  * The HMAC is calculated across all the data (except the HMAC itself, of
  * course), generated using the HMAC key described above and the SHA-256 PRF.
- * <p> 
- * See <a href="https://github.com/rnapier/RNCryptor/wiki/Data-Format">https://github.com/rnapier/RNCryptor/wiki/Data-Format</a>, 
- * from which most of the information above was shamelessly copied.
+ * <p>
+ * See <a
+ * href="https://github.com/rnapier/RNCryptor/wiki/Data-Format">https://github
+ * .com/rnapier/RNCryptor/wiki/Data-Format</a>, from which most of the
+ * information above was shamelessly copied.
  */
 public class AES256v2Cryptor implements JNCryptor {
 
-  private static final String AES_CIPHER_ALGORITHM = "AES/CBC/PKCS5Padding";
-  private static final String HMAC_ALGORITHM = "HmacSHA256";
+  /**
+   * The algorithm used for encrypting/decrypting data.
+   */
+  static final String AES_CIPHER_ALGORITHM = "AES/CBC/PKCS5Padding";
+
+  /**
+   * The algorithm used for calculating the HMAC.
+   */
+  static final String HMAC_ALGORITHM = "HmacSHA256";
+
   private static final String AES_NAME = "AES";
   private static final String KEY_DERIVATION_ALGORITHM = "PBKDF2WithHmacSHA1";
   private static final int PBKDF_ITERATIONS = 10000;
@@ -203,8 +213,8 @@ public class AES256v2Cryptor implements JNCryptor {
       cipher.init(Cipher.ENCRYPT_MODE, encryptionKey, new IvParameterSpec(iv));
       byte[] ciphertext = cipher.doFinal(plaintext);
 
-      AES256v2Ciphertext output = new AES256v2Ciphertext(encryptionSalt, hmacSalt,
-          iv, ciphertext);
+      AES256v2Ciphertext output = new AES256v2Ciphertext(encryptionSalt,
+          hmacSalt, iv, ciphertext);
 
       Mac mac = Mac.getInstance(HMAC_ALGORITHM);
       mac.init(hmacKey);
