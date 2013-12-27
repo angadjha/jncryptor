@@ -46,6 +46,8 @@ JNCryptor can be used in Android applications. [http://code.google.com/p/jncrypt
 
 You may wish to replace the `slf4j-api-*.jar` file with latest version of SLF4J Android, available at http://www.slf4j.org/android. This translates logging calls directly to the Android logging system. 
 
+Please note that very little Android testing has been completed and some users report compatibility problems with old versions of Android (see the Issues page). If I can find an easy way to do so, I'll start increasing my Android testing and improve the library accordingly. 
+
 
 =Data Format=
 
