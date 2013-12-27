@@ -17,7 +17,7 @@ You can download binaries, documentation and source from the [http://code.google
 <dependency>
     <groupId>org.cryptonode.jncryptor</groupId>
     <artifactId>jncryptor</artifactId>
-    <version>0.3</version>
+    <version>0.4</version>
 </dependency>
 }}}
 
@@ -29,6 +29,7 @@ A quick example is shown below:
 
 <code language="java">
 JNCryptor cryptor = JNCryptorFactory.getCryptor();
+cryptor.setPBKDFIterations(1000); // optional (default is 10,000)
 byte[] plaintext = "Hello, World!".getBytes();
 String password = "secretsquirrel";
 
