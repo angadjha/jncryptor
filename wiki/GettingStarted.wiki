@@ -29,7 +29,6 @@ A quick example is shown below:
 
 <code language="java">
 JNCryptor cryptor = new AES256JNCryptor();
-cryptor.setPBKDFIterations(1000); // optional (default is 10,000)
 byte[] plaintext = "Hello, World!".getBytes();
 String password = "secretsquirrel";
 
@@ -39,6 +38,16 @@ try {
   // Something went wrong
   e.printStackTrace();
 }</code>
+
+=Iterations=
+
+JNCryptor supports changing the number of PBKDF2 iterations performed by the library. I regret introducing this functionality for two reasons:
+
+  * It is a lazy effort to try and improve performance on Android devices at the expense of security. Really I need to benchmark the library and determine where the slow points are.
+
+  * There is no support in the data format for expressing the number of iterations, therefore you must store this value outside the data itself. Other implementations may not support this feature, causing compatibility problems.
+
+In summary - consider ignoring this feature until the data format supports it. Hopefully I'll improve performance in other ways before that.
 
 =Android=
 
