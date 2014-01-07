@@ -17,7 +17,7 @@ You can download binaries, documentation and source from the [http://code.google
 <dependency>
     <groupId>org.cryptonode.jncryptor</groupId>
     <artifactId>jncryptor</artifactId>
-    <version>0.4</version>
+    <version>0.5</version>
 </dependency>
 }}}
 
@@ -28,7 +28,7 @@ The [http://jncryptor.googlecode.com/svn/trunk/javadoc/index.html JNCryptor Java
 A quick example is shown below:
 
 <code language="java">
-JNCryptor cryptor = JNCryptorFactory.getCryptor();
+JNCryptor cryptor = new AES256JNCryptor();
 cryptor.setPBKDFIterations(1000); // optional (default is 10,000)
 byte[] plaintext = "Hello, World!".getBytes();
 String password = "secretsquirrel";
@@ -54,7 +54,7 @@ Please note that very little Android testing has been completed and some users r
 A proprietary data format is used that stores the IV, salt values (if applicable), ciphertext and HMAC value in a compact fashion. Methods are offered to encrypt data based on either an existing key, or a password. In the latter case, a key is derived from the password using a key derivation function, with 10,000 iterations and a salt value.
 
 || *Item* || *Byte length* || *Description* ||
-|| Version || 1 || Data format version. Always `0x02`. ||
+|| Version || 1 || Data format version. Currently `0x03`. ||
 || Options || 1 || Options. `0x01` indicates a password was used. ||
 || Encryption Salt || 8 || Salt value used to derive the encryption key. Only present if a password was used. ||
 || HMAC Salt || 8 || Salt value used to derive the HMAC key. Only present if a password was used. ||
@@ -66,4 +66,4 @@ Keys are derived from the password and the appropriate salt value using the PBKD
 
 =History=
 
-The data format supported by this library is v2. Both v1 and v0 have a [http://robnapier.net/blog/rncryptor-hmac-vulnerability-827 significant security flaw] whereby only the ciphertext was included in the HMAC value. There are no plans to support v1 or v0.
+The data format supported by this library is v3. Both v1 and v0 have a [http://robnapier.net/blog/rncryptor-hmac-vulnerability-827 significant security flaw] whereby only the ciphertext was included in the HMAC value. There are no plans to support v1 or v0. v2 was deprecated due to a multi-byte password issue discovered in the objective-c implementation.
