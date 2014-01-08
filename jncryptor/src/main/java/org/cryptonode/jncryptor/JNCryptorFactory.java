@@ -22,11 +22,6 @@ import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.Validate;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Factory used to obtain {@link JNCryptor} instances. A different instance is
  * available for each version of the original RNCryptor library. The most modern
@@ -57,9 +52,6 @@ import org.slf4j.LoggerFactory;
 @Deprecated
 public class JNCryptorFactory {
 
-  private static final Logger LOGGER = LoggerFactory
-      .getLogger(JNCryptorFactory.class);
-
   private static final SortedMap<Integer, JNCryptor> supportedVersions = new TreeMap<Integer, JNCryptor>();
 
   static {
@@ -73,10 +65,9 @@ public class JNCryptorFactory {
       }
 
       try {
-        List<String> listOfClasses = IOUtils.readLines(in);
+        List<String> listOfClasses = FileUtils.readLines(in, "UTF-8");
         for (String className : listOfClasses) {
           Class.forName(className);
-          LOGGER.debug("Loaded class {}.", className);
         }
       } finally {
         in.close();
@@ -129,7 +120,6 @@ public class JNCryptorFactory {
     }
 
     supportedVersions.put(version, cryptor);
-    LOGGER.debug("Cryptor registered with support for version {}.", version);
   }
 
   /**

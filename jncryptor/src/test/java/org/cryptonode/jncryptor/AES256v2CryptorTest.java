@@ -24,7 +24,6 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
-import org.apache.commons.io.Charsets;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -104,7 +103,7 @@ public class AES256v2CryptorTest {
     AES256v2Cryptor cryptor = new AES256v2Cryptor();
     byte[] plaintext = cryptor.decryptData(ciphertext, password.toCharArray());
 
-    String plaintextString = new String(plaintext, Charsets.UTF_8);
+    String plaintextString = new String(plaintext, "UTF-8");
 
     assertEquals(expectedPlaintextString, plaintextString);
   }

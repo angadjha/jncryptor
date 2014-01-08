@@ -23,7 +23,6 @@ import java.io.File;
 import java.net.URL;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 /**
@@ -66,7 +65,8 @@ public class JNCryptorFactoryTest {
       fail("Cannot find cryptor class list.");
     }
 
-    List<String> classList = FileUtils.readLines(new File(url.getPath()));
+    List<String> classList = FileUtils.readLines(new File(url.getPath()),
+        "UTF-8");
 
     // Check each class actually exists
     for (String clazz : classList) {
